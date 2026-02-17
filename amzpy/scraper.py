@@ -104,7 +104,7 @@ class AmazonScraper:
         response = self.session.get(url)
         if not response or not response.text:
             print(f"Failed to fetch search page: {url}")
-            break
+            return None
         return response
 
     def get_product_details(self, url: str) -> Optional[Dict]:
