@@ -102,7 +102,7 @@ class AmazonScraper:
     def proxy_request(self, url_string: str):
         url = f"https://www.amazon.{self.country_code}/{url_string}"
         response = self.session.get(url)
-        if not response or not response.text:
+        if not response:
             print(f"Failed to fetch search page: {url}")
             return None
         return response
