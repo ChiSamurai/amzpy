@@ -99,6 +99,14 @@ class AmazonScraper:
         
         return self.user_config
 
+    def proxy_request(self, url_string: str):
+        url = "https://www.amazon.{self.country_code}/{url_string}"
+        response = self.session.get(url)
+            if not response or not response.text:
+                print(f"Failed to fetch search page: {url}")
+                break
+        return response
+
     def get_product_details(self, url: str) -> Optional[Dict]:
         """
         Fetch and parse details for a product using its Amazon URL.
